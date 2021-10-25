@@ -6,8 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-50.times do |i|
-  Post.create!(
-    body: "投稿_#{i+1}",
-  )
+require "faker"
+Faker::Config.locale = :ja
+
+# 50件の初期データを投入
+50.times do
+  Post.create!(body: Faker::Name.name)
 end
+
+puts "初期データの投入に成功しました！"
